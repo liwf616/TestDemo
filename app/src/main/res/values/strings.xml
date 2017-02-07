@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">Video2Mp3</string>
+    <string name="ad_unit_id">ca-app-pub-9920536185791139/3952367202</string>
+
+    <string name="welcome_hint">VIDEO-TO-MP3</string>
+
+    <string name="tab_home">HOME</string>
+    <string name="tab_video">VIDEOS</string>
+    <string name="tab_saved">MP3s</string>
+    <string name="tab_task">TASKS</string>
+
+
+    <string name="search">Search</string>
+    <string name="action_shuffle_all">Shuffle All</string>
+    <string name="action_equalizer">Equalizer</string>
+    <string name="search_library">Search Library</string>
+
+    <string name="action_settings">Settings</string>
+</resources>

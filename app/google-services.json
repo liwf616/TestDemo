@@ -1,0 +1,50 @@
+{
+  "project_info": {
+    "project_number": "150071154591",
+    "firebase_url": "https://video2audio-5d051.firebaseio.com",
+    "project_id": "video2audio-5d051",
+    "storage_bucket": "video2audio-5d051.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:150071154591:android:9072a8ca84df7fcd",
+        "android_client_info": {
+          "package_name": "com.av.vtoa"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "150071154591-e68b3e7p90jbsddgojtg39fdlfapg13p.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBqqVLwZ9DzYMLPwiwc97t3eoD2hyxGJxU"
+        },
+        {
+          "current_key": "AIzaSyAs4ZIvrCZmj8jIXRC3ME0zPPpGdNuKSsk"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "150071154591-e68b3e7p90jbsddgojtg39fdlfapg13p.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
