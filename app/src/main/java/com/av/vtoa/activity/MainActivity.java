@@ -1,6 +1,7 @@
 package com.av.vtoa.activity;
 
 import com.av.vtoa.R;
+import com.av.vtoa.UserDatas;
 import com.av.vtoa.base.BaseActivity;
 import com.av.vtoa.fragment.TaskFragment;
 import com.av.vtoa.fragment.VideoFragment;
@@ -120,7 +121,8 @@ public class MainActivity extends BaseActivity {
 
     @Override
     protected void initData() {
-
+        UserDatas.getInstance().setContext(this);
+        UserDatas.getInstance().loadDatas();
     }
 
     static class Adapter extends FragmentPagerAdapter {

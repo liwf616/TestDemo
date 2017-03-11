@@ -24,12 +24,11 @@ public class VideoLoader {
                 int duration = cursor.getInt(4);
                 String path=cursor.getString(5);
                 String mime_type = cursor.getString(6);
-                String mimetype = cursor.getString(7);
-//                String diplayname = cursor.getString(8);
-                long date = cursor.getLong(9);
-                long size = cursor.getLong(10);
+//                String diplayname = cursor.getString(7);
+                long date = cursor.getLong(8);
+//                long size = cursor.getLong(9);
 
-                arrayList.add(new VideoModel(title, path, duration,date));
+                arrayList.add(new VideoModel(title, path, duration, date));
             } while (cursor.moveToNext());
 
         if (cursor != null)
@@ -43,7 +42,7 @@ public class VideoLoader {
 
     private static Cursor makeSongCursor(Context context, String selection, String[] paramArrayOfString,
         String sortOrder) {
-        String selectionStatement = "video=1 AND title != ''";
+        String selectionStatement =  null;;
 
         if (!TextUtils.isEmpty(selection)) {
             selectionStatement = selectionStatement + " AND " + selection;
@@ -59,11 +58,11 @@ public class VideoLoader {
                 MediaStore.Video.Media.MIME_TYPE,
                 MediaStore.Video.Media.DISPLAY_NAME,
                 MediaStore.Video.Media.DATE_MODIFIED,
-                MediaStore.Video.Media.SIZE
+//                MediaStore.Video.Media.SIZE
             };
 
         return context.getContentResolver().query(MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
-                mediaColumns,selectionStatement, paramArrayOfString, sortOrder);
+                mediaColumns, selectionStatement, paramArrayOfString, sortOrder);
 
     }
 }

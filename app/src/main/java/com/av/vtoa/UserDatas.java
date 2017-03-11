@@ -22,10 +22,11 @@ public class UserDatas {
 
     private Context mContext;
 
-    // songs
     private AsyncTask<String, Void, String> mTask;
 
     private List<VideoModel> mVideos;
+
+    private List<DataChangedListener> mListenerList = new ArrayList<>();
 
     public static UserDatas getInstance() {
         if (sUserDatas == null) {
@@ -43,19 +44,35 @@ public class UserDatas {
     }
 
     public void loadDatas() {
-        loadMusics();
+        loadMovies();
     }
 
-    public void loadMusics() {
+    public void register(DataChangedListener listener) {
+        mListenerList.add(listener);
+        listener.updateVideos(getVideos());
+    }
+
+    public void unregister(DataChangedListener listener) {
+        mListenerList.remove(listener);
+    }
+
+    public List<VideoModel> getVideos() {
+        if (null == mVideos) {
+            mVideos = new ArrayList<>();
+        }
+        return mVideos;
+    }
+
+    public void loadMovies() {
         if (null != mTask && mTask.isCancelled()) {
             mTask.cancel(true);
         }
         LinkedBlockingQueue<Runnable> blockingQueue = new LinkedBlockingQueue<Runnable>();
         ExecutorService exec = new ThreadPoolExecutor(1, 1, 0L, TimeUnit.MILLISECONDS, blockingQueue);
-        mTask = new loadSongs().executeOnExecutor(exec);
+        mTask = new loadVideos().executeOnExecutor(exec);
     }
 
-    private class loadSongs extends AsyncTask<String, Void, String> {
+    private class loadVideos extends AsyncTask<String, Void, String> {
         @Override
         protected String doInBackground(String...params) {
             mVideos = VideoLoader.getAllVideos(mContext);
@@ -64,10 +81,35 @@ public class UserDatas {
 
         @Override
         protected void onPostExecute(String result) {
+            for (DataChangedListener listener : mListenerList) {
+                if (null != listener) {
+                    listener.updateVideos(mVideos);
+                }
+            }
         }
 
         @Override
         protected void onPreExecute() {
         }
+    }
+
+    public interface DataChangedListener {
+        void updateVideos(List<VideoModel> list);
+
+//        void updateRecords(List<RecordModel> list);
+//
+//        void updateCutters(List<CutterModel> list);
+//
+//        void updatePlayStatus(int mainType);
+//
+//        void sortByName(int sortType, boolean isNeedRevers);
+//
+//        void sortByDate(int sortType, boolean isNeedRevers);
+//
+//        void sortByTrack(int sortType, boolean isNeedRevers);
+//
+//        void sortByArtist(int sortType, boolean isNeedRevers);
+//
+//        void sortByAlbum(int sortType, boolean isNeedRevers);
     }
 }
